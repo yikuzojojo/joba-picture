@@ -7,7 +7,10 @@ import java.util.List;
 
 @Data
 public class PictureUpdateRequest implements Serializable {
-  
+
+
+
+
     /**  
      * id  
      */  
