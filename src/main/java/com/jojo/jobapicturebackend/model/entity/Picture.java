@@ -120,6 +120,11 @@ public class Picture {
      */
     private String thumbnailUrl;
 
+    /**
+     * 空间 id
+     */
+    private Long spaceId;
+
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

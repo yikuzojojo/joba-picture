@@ -11,7 +11,13 @@ import java.util.List;
 
 @Data
 public class PictureVO implements Serializable {
-  
+
+    /**
+     * 空间 id
+     */
+    private Long spaceId;
+
+
     /**  
      * id  
      */  

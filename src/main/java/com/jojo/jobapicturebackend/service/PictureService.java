@@ -3,10 +3,7 @@ package com.jojo.jobapicturebackend.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.jojo.jobapicturebackend.model.dto.picture.PictureQueryRequest;
-import com.jojo.jobapicturebackend.model.dto.picture.PictureReviewRequest;
-import com.jojo.jobapicturebackend.model.dto.picture.PictureUploadByBatchRequest;
-import com.jojo.jobapicturebackend.model.dto.picture.PictureUploadRequest;
+import com.jojo.jobapicturebackend.model.dto.picture.*;
 import com.jojo.jobapicturebackend.model.entity.Picture;
 import com.jojo.jobapicturebackend.model.entity.User;
 import com.jojo.jobapicturebackend.model.vo.PictureVO;
@@ -99,4 +96,10 @@ public interface PictureService extends IService<Picture> {
      */
     @Async
     void clearPictureFile(Picture oldPicture);
+
+    void checkPictureAuth(User loginUser, Picture picture);
+
+    void deletePicture(long pictureId, User loginUser);
+
+    void editPicture(PictureEditRequest pictureEditRequest, User loginUser);
 }
