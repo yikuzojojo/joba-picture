@@ -10,6 +10,7 @@ import com.jojo.jobapicturebackend.model.dto.picture.PictureUploadRequest;
 import com.jojo.jobapicturebackend.model.entity.Picture;
 import com.jojo.jobapicturebackend.model.entity.User;
 import com.jojo.jobapicturebackend.model.vo.PictureVO;
+import org.springframework.scheduling.annotation.Async;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -92,4 +93,10 @@ public interface PictureService extends IService<Picture> {
     Integer uploadPictureByBatch(PictureUploadByBatchRequest pictureUploadByBatchRequest,
                                  User loginUser);
 
+    /**
+     * 清理图片文件
+     * @param oldPicture
+     */
+    @Async
+    void clearPictureFile(Picture oldPicture);
 }
