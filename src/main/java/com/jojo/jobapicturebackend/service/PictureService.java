@@ -8,8 +8,10 @@ import com.jojo.jobapicturebackend.model.entity.Picture;
 import com.jojo.jobapicturebackend.model.entity.User;
 import com.jojo.jobapicturebackend.model.vo.PictureVO;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * @author 17240
@@ -97,9 +99,42 @@ public interface PictureService extends IService<Picture> {
     @Async
     void clearPictureFile(Picture oldPicture);
 
+    /**
+     * 检查图片权限
+     * @param loginUser
+     * @param picture
+     */
     void checkPictureAuth(User loginUser, Picture picture);
 
+    /**
+     * 删除图片
+     * @param pictureId
+     * @param loginUser
+     */
     void deletePicture(long pictureId, User loginUser);
 
+    /**
+     * 修改图片
+     * @param pictureEditRequest
+     * @param loginUser
+     */
     void editPicture(PictureEditRequest pictureEditRequest, User loginUser);
+
+    /**
+     * 颜色查询服务
+     * @param spaceId
+     * @param picColor
+     * @param loginUser
+     * @return
+     */
+    List<PictureVO> searchPictureByColor(Long spaceId, String picColor, User loginUser);
+
+
+    /**
+     * 批量修改图片
+     * @param pictureEditByBatchRequest
+     * @param loginUser
+     */
+    @Transactional(rollbackFor = Exception.class)
+    void editPictureByBatch(PictureEditByBatchRequest pictureEditByBatchRequest, User loginUser);
 }

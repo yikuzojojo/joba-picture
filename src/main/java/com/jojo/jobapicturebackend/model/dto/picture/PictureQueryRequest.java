@@ -6,6 +6,8 @@ import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Date;
+
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -94,7 +96,19 @@ public class PictureQueryRequest extends PageRequest implements Serializable {
     /**  
      * 用户 id  
      */  
-    private Long userId;  
-  
+    private Long userId;
+
+
+    /**
+     * 开始编辑时间
+     */
+    private Date startEditTime;
+
+    /**
+     * 结束编辑时间
+     */
+    private Date endEditTime;
+
+
     private static final long serialVersionUID = 1L;  
 }
